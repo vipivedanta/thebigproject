@@ -78,8 +78,28 @@
             </div>
         </nav>
 
-        @yield('content')
-    </div>
+
+        <div class="container">
+        <div class="row">
+            
+        <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item active">Work space</li>
+              <li class="list-group-item">{{ HTML::link('/projects','Projects') }}</li>
+              <li class="list-group-item">{{ HTML::link('/analytics','Analytics') }}</li>
+              <li class="list-group-item">{{ HTML::link('/commits','Commits') }}</li>
+            </ul>    
+        </div>
+
+        <div class="col-md-9">
+           @yield('content')
+        </div>
+
+        </div>
+        </div>
+
+            
+        </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

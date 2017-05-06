@@ -63,3 +63,6 @@ html,body {
 .tbp-footer-text{
     text-align: center;
 }
+.glyphicon{ 
+    font-weight: 500 !important; 
+}
