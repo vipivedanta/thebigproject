@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::get('/about-us',function(){
 	return view('front.about_us');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
