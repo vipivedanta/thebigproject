@@ -7,10 +7,12 @@
         <title>{{ env('APP_TITLE') }}</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="tether/css/tether.min.css" />
+        <iink rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/custom.css" />
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height-1">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -26,5 +28,14 @@
                 @yield('content')
             </div>
         </div>
+
+        <section class="thp-footer">
+            <p class="text text-center tbp-black tbp-footer-text">All rights reservced @theBigProject</p>
+        </section>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="tether/js/tether.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>   
+
     </body>
 </html>
