@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\projectFormRequest;
+use App\Http\Requests\ProjectEditrequest;
 
 
 class ProjectController extends Controller
@@ -16,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('user_id',Auth::id())->get();
+        $projects = Project::where('user_id',Auth::id())->orderBy('name')->get();
         return view('projects.report',['projects' => $projects]);
     }
 
@@ -27,7 +29,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        die('REST controller');
+        return view('projects.create');
     }
 
     /**
@@ -36,9 +38,17 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        
+    public function store(projectFormRequest $request)
+    {   
+        die('ss');
+        $data = $request->all();
+        unset($data['_token']);
+
+        $project = new Project($data);
+        $project->user_id = Auth::id();
+        $project->save();
+
+        return \Redirect::route('projects.index')->with('message','Congrats! You have just saved your new project!');
     }
 
     /**
@@ -49,7 +59,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -59,8 +69,9 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $project = Project::find($id);
+        return view('projects.edit',[ 'project' => $project ]);
     }
 
     /**
@@ -70,9 +81,13 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectEditrequest $request, $id)
     {
-        //
+        $project = Project::find($id);
+        $project->name = $request->all()['name'];
+        $project->description = $request->all()['description'];
+        $project->save();
+        return \Redirect::route('projects.index')->with('message','Project details has been updated.');
     }
 
     /**
@@ -83,6 +98,6 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

@@ -7,6 +7,7 @@
         <title>{{ env('APP_TITLE') }}</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/custom.css" />
     </head>
     <body>

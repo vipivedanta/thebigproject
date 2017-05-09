@@ -19,7 +19,7 @@
 	      <div class="caption">
 	        <h3 class="text text-center">{{ $project->name }}</h3>
 	        <p class="text text-center">{{ $project->description }}</p>
-	        <p class="text text-center"><a href="#" class="btn btn-default" role="button">View</a> 
+	        <p class="text text-center"><a href="{{ url('/projects/'.$project->id.'/edit') }}" class="btn btn-default" role="button">Edit</a> 
 	        <a href="#" class="btn btn-default" role="button">Analytics</a></p>
 	      </div>
 	    </div>
