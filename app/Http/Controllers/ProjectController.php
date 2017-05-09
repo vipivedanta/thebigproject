@@ -40,7 +40,6 @@ class ProjectController extends Controller
      */
     public function store(projectFormRequest $request)
     {   
-        die('ss');
         $data = $request->all();
         unset($data['_token']);
 
